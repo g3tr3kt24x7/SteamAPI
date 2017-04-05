@@ -1,0 +1,7 @@
+﻿@model SteamAPIWebApplication.ViewModels.SteamHomeViewModel
+@using (Html.BeginForm("Index", "SteamVanityUserName", FormMethod.Get))
+{
+    @Html.TextBoxFor(m => m.vanityUserName.VanityUserName, new { @class = "form-control", placeholder = "Enter Vanity Username" })
+    @*@Html.ActionLink("Submit", "Index", "SteamVanityUserName", new { @class = "btn btn-success")*@
+    <input type="submit" class="btn btn-success" />
+}

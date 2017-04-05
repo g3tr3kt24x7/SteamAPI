@@ -1,0 +1,50 @@
+﻿@model SteamAPIWebApplication.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+@using SteamAPIWebApplication.Models
+@*<h4>Use another service to log in.</h4>
+<hr />*@
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0) {
+        <div>
+            <p>
+                There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                for details on setting up this ASP.NET application to support logging in via external services.
+            </p>
+        </div>
+    }
+    else
+    {
+        if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @Html.ActionLink("Hello " + SteamUserProfile.UserName + "!", "Index", "SteamVanityUserName", routeValues: null, htmlAttributes: new { title = "User Profile" })
+                    </li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                </ul>
+            }
+        }
+        else
+        {
+            using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+            {
+            @Html.AntiForgeryToken()
+            <div class="nav navbar-nav navbar-right">
+                @*id="socialLoginList"*@
+                <p> 
+                        @foreach (AuthenticationDescription p in loginProviders)
+                        {
+                            <button type="submit" class="btn btn-link" style="color:#eeeeee;text-decoration:none;margin-top:5px;" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">Login using your @p.AuthenticationType account</button>
+                            
+                        }
+                </p>
+            </div>
+                }
+            }
+        }
+}
