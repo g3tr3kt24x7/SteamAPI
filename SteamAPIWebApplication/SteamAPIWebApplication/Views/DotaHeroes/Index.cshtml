@@ -1,0 +1,14 @@
+﻿@model List<SteamAPIWebApplication.Models.BasicContents.DotaHeroes>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@foreach(var items in Model)
+{
+    <ul>
+        <li><a href="#">@items.id</a></li>
+        <li>@items.name</li>
+        @*<li>@items.localized_name</li>*@
+    </ul>
+}

@@ -419,6 +419,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="CommonClasses\clsCommon.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DotaHeroesController.cs" />
+    <Compile Include="Controllers\DotaItemsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SteamMatchDetailsController.cs" />
@@ -427,6 +429,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BasicContents\DotaHeroes.cs" />
+    <Compile Include="Models\BasicContents\DotaItems.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SteamMatchDetailsAPI\SteamMatchDetailsAPI.cs" />
@@ -500,6 +504,8 @@
     <Content Include="Views\Home\_VanityUserName.cshtml" />
     <Content Include="Views\SteamVanityUserName\Index.cshtml" />
     <Content Include="Views\SteamMatchDetails\Index.cshtml" />
+    <Content Include="Views\DotaHeroes\Index.cshtml" />
+    <Content Include="Views\DotaItems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

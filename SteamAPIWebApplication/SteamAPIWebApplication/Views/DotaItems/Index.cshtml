@@ -1,0 +1,17 @@
+﻿@model List<SteamAPIWebApplication.Models.BasicContents.DotaItems>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@foreach(var items in Model)
+{
+    <ul>
+        <li><a href="#">@items.id</a></li>
+        <li>@items.name</li>
+        <li>@items.cost</li>
+        <li>@items.secret_shop</li>
+        <li>@items.side_shop</li>
+    </ul>
+}
+
