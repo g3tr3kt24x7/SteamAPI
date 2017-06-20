@@ -48,7 +48,7 @@ namespace SteamAPIWebApplication.Controllers
                 foreach (KeyValue k in kvProfile["players"]["player"].Children)
                 {
                     svPersonalInfo.personaname = k["personaname"].Value.ToString();
-                    svPersonalInfo.personastate = k["personastate"].Value.ToString();
+                    svPersonalInfo.personastate = clsCommon.FilterPersonalState(k["personastate"].Value.ToString());
                     svPersonalInfo.profileurl = k["profileurl"].Value.ToString();
                     svPersonalInfo.profilestate = k["profilestate"].Value.ToString();
                     svPersonalInfo.avatar = k["avatar"].Value.ToString();
