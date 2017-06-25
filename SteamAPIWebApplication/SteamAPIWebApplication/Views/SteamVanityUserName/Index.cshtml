@@ -1,5 +1,5 @@
 ﻿@model SteamAPIWebApplication.ViewModels.SteamFriendsViewModel
-@using SteamAPIWebApplication.Models
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Index";
 }
@@ -12,7 +12,7 @@
             </ul>
         </div>
         <div class="col-md-4">
-            <a href="@Url.Action("Index","SteamMatchDetails", new { steamid = SteamUserProfile.steamid })">
+            <a href="@Url.Action("Index","SteamMatchDetails", new { steamid = User.Identity.GetUserId() })">
                 <img src="@Model.svPersonalInfo.avatarmedium" /><br />
             </a>
         </div>

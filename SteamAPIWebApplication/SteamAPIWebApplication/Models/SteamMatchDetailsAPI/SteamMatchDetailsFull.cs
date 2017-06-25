@@ -22,6 +22,7 @@ namespace SteamAPIWebApplication.Models.SteamMatchDetailsAPI
         //7 - Ranked Matchmaking
         //8 - 1v1 Solo Mid
         public string lobby_type { get; set; }
+        public string lobby_type_name { get; set; }
         #endregion
     }
 }

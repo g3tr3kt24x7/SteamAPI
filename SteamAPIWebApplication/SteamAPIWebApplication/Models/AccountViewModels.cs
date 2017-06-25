@@ -8,8 +8,8 @@ namespace SteamAPIWebApplication.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        //public string SteamId { get; set; }
-        //public string UserName { get; set; }
+        public string SteamId { get; set; }
+        public string UserName { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -66,6 +66,8 @@ namespace SteamAPIWebApplication.Models
 
     public class RegisterViewModel
     {
+        public string UserName { get; set; }
+        public string steamId { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

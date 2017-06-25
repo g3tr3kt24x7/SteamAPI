@@ -4,11 +4,10 @@
 }
 
 <h2>Index</h2>
-@foreach(var items in Model)
+@foreach (var items in Model)
 {
-    <ul>
-        <li><a href="#">@items.id</a></li>
-        <li>@items.name</li>
+    <div class="col-md-1">
+        <img src="#" width="64" height="64" alt="@items.name" title='hero name = @items.name' />
         @*<li>@items.localized_name</li>*@
-    </ul>
+    </div>
 }

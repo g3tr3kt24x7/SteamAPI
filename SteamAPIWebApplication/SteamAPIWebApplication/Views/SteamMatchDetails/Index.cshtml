@@ -10,18 +10,22 @@
 <h2>Index</h2>
 @foreach(var items in Model.matches)
 {
-    <a href="#" id="@items.match_id">@items.match_id</a>
+    <a href="@Url.Action("GetMatchDetailById","SteamMatchDetails",new { matchid=items.match_id })" id="@items.match_id">@items.match_id</a>
     @items.start_time<br/>
-    <p>Lobby Type = @items.lobby_type</p><br />
+    <p>Lobby Type = @items.lobby_type</p>
+    <p>Lobby Name= @items.lobby_type_name</p><br />
     foreach (var item in Model.players)
     {
         if (item.match_id == items.match_id)
         {
+            
             <ul style="list-style-type:none">
                 <li>Account id = @item.account_id</li>
+                <li>Account Name = @item.steam_account_match</li>
                 <li>Hero Id = @item.hero_id</li>
+                <li>Hero Name = @item.hero_name</li>
                 <li>Player Slot = @item.player_slot</li>
-                
+                <li>Player Slot Name = @item.player_slot_side</li>
             </ul>
         }
         //else

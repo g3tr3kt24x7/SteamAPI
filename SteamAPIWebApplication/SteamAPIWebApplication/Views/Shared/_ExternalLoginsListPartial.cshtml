@@ -1,5 +1,6 @@
 ﻿@model SteamAPIWebApplication.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
+@using Microsoft.AspNet.Identity
 @using SteamAPIWebApplication.Models
 @*<h4>Use another service to log in.</h4>
 <hr />*@
@@ -23,7 +24,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        @Html.ActionLink("Hello " + SteamUserProfile.UserName + "!", "Index", "SteamVanityUserName", routeValues: null, htmlAttributes: new { title = "User Profile" })
+                        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "SteamVanityUserName", routeValues: null, htmlAttributes: new { title = "User Profile" })
                     </li>
                     <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                 </ul>

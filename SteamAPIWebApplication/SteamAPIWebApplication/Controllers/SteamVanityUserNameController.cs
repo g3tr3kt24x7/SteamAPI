@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace SteamAPIWebApplication.Controllers
 {
@@ -31,7 +32,7 @@ namespace SteamAPIWebApplication.Controllers
                 //    if (k.Name.ToString().ToLower() == "steamid")
                 //        svUserName.SteamId = k.Value.ToString();
                 //}
-                KeyValue kvFriends = steamVanity.GetFriendList(steamid: SteamUserProfile.steamid, relationship: "all");
+                KeyValue kvFriends = steamVanity.GetFriendList(steamid: User.Identity.GetUserId(), relationship: "all");
                 foreach (KeyValue k in kvFriends["friends"].Children)
                 {
                     SteamFriendsAPI friends = new SteamFriendsAPI()
@@ -44,7 +45,7 @@ namespace SteamAPIWebApplication.Controllers
                     svFriends.Add(friends);
 
                 }
-                KeyValue kvProfile = steamVanity.GetPlayerSummaries(steamids: SteamUserProfile.steamid);
+                KeyValue kvProfile = steamVanity.GetPlayerSummaries(steamids: User.Identity.GetUserId());
                 foreach (KeyValue k in kvProfile["players"]["player"].Children)
                 {
                     svPersonalInfo.personaname = k["personaname"].Value.ToString();

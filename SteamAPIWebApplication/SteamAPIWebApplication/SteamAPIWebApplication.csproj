@@ -428,11 +428,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704181133448_InitialCreate.cs" />
+    <Compile Include="Migrations\201704181133448_InitialCreate.Designer.cs">
+      <DependentUpon>201704181133448_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706220513212_Account.cs" />
+    <Compile Include="Migrations\201706220513212_Account.Designer.cs">
+      <DependentUpon>201706220513212_Account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706220617392_abc.cs" />
+    <Compile Include="Migrations\201706220617392_abc.Designer.cs">
+      <DependentUpon>201706220617392_abc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706230411081_DotaItems.cs" />
+    <Compile Include="Migrations\201706230411081_DotaItems.Designer.cs">
+      <DependentUpon>201706230411081_DotaItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BasicContents\DotaHeroes.cs" />
     <Compile Include="Models\BasicContents\DotaItems.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SteamMatchDetailsAPI\IndividualMatched\SteamMatchDetailByID.cs" />
     <Compile Include="Models\SteamMatchDetailsAPI\SteamMatchDetailsAPI.cs" />
     <Compile Include="Models\SteamMatchDetailsAPI\SteamMatchDetailsFull.cs" />
     <Compile Include="Models\SteamMatchDetailsAPI\SteamPlayersMatchDetails.cs" />
@@ -445,6 +463,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\SteamFriendsViewModel.cs" />
     <Compile Include="ViewModels\SteamHomeViewModel.cs" />
+    <Compile Include="ViewModels\SteamMatchDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -506,6 +525,7 @@
     <Content Include="Views\SteamMatchDetails\Index.cshtml" />
     <Content Include="Views\DotaHeroes\Index.cshtml" />
     <Content Include="Views\DotaItems\Index.cshtml" />
+    <Content Include="Views\SteamMatchDetails\GetMatchDetailById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -517,6 +537,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704181133448_InitialCreate.resx">
+      <DependentUpon>201704181133448_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706220513212_Account.resx">
+      <DependentUpon>201706220513212_Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706220617392_abc.resx">
+      <DependentUpon>201706220617392_abc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706230411081_DotaItems.resx">
+      <DependentUpon>201706230411081_DotaItems.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

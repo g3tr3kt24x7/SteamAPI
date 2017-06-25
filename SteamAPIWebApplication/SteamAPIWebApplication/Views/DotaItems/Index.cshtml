@@ -4,14 +4,56 @@
 }
 
 <h2>Index</h2>
-@foreach(var items in Model)
-{
-    <ul>
-        <li><a href="#">@items.id</a></li>
-        <li>@items.name</li>
-        <li>@items.cost</li>
-        <li>@items.secret_shop</li>
-        <li>@items.side_shop</li>
-    </ul>
-}
+@*<div class="row">*@
+<div class="form-horizontal">
+    <div class="col-md-4">
+        <h4>Normal Shop</h4>
+        @*<ul>*@
+            @foreach (var items in Model)
+            {
+                if (items.secret_shop == "0")
+                {
+                    <div class="col-md-2">
+                        <img src="#" width="32" height="32" alt="@items.name" title='item name = @items.name and cost = @items.cost' />
+                    </div>
+                }
+            }
+        @*</ul>*@
+    </div>
+    <div class="col-md-4">
+        <h4>Secret Shop</h4>
+       
+            @foreach (var items in Model)
+            {
+                if (items.secret_shop == "1")
+                {
+                    <div class="col-md-2">
+                        <img src="#" width="32" height="32" alt="@items.name" title='item name = @items.name and cost = @items.cost' />
+                    </div>
+                    
+                }
+            }
+        
+    </div>
+    <div class="col-md-4">
+        <h4>Side Shop</h4>
+        
+            @foreach (var items in Model)
+            {
+                if (items.side_shop == "1")
+                {
+                    <div class="col-md-2">
+                        <img src="#" width="32" height="32" alt="@items.name" title='item name = @items.name and cost = @items.cost' />
+                    </div>
+                }
+
+            }
+            
+        
+    </div>
+</div>
+   
+
+
+@*</div>*@
 

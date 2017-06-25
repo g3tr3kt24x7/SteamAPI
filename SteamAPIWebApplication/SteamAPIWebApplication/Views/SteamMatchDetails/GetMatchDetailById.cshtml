@@ -1,0 +1,72 @@
+﻿@model SteamAPIWebApplication.ViewModels.SteamMatchDetailViewModel
+@{
+    ViewBag.Title = "GetMatchDetailById";
+}
+
+<h2>GetMatchDetailById</h2>
+@Model.steamMatchDetailsIDIndividual.radiant_win<br />
+@Model.steamMatchDetailsIDIndividual.start_time<br />
+@Model.steamMatchDetailsIDIndividual.duration<br />
+@Model.steamMatchDetailsIDIndividual.first_blood_time<br />
+@Model.steamMatchDetailsIDIndividual.radiant_score<br />
+@Model.steamMatchDetailsIDIndividual.dire_score<br />
+@Model.steamMatchDetailsIDIndividual.game_mode
+<table border="1">
+    <tr>
+        <td>Account Id</td>
+        <td>Player Slot </td>
+        <td>Hero Id</td>
+        <td>Item 0</td>
+        <td>Item 1</td>
+        <td>Item 2</td>
+        <td>Item 3</td>
+        <td>Item 4</td>
+        <td>Item 5</td>
+        <td>Kills</td>
+        <td>Deaths</td>
+        <td>Assists</td>
+        <td>Gold</td>
+        <td>Last Hits</td>
+        <td>Denies</td>
+        <td>GPM</td>
+        <td>XPM</td>
+        <td>Gold Spent</td>
+        <td>Hero Damage</td>
+        <td>Tower Damage</td>
+        <td>Hero Healing</td>
+        <td>Level</td>
+        <td>Backpack 0</td>
+        <td>Backpack 1</td>
+        <td>Backpack 2</td>
+    </tr>
+    @foreach (var items in Model.steamMatchDetails)
+    {
+        <tr>
+            <td>@items.accountid</td>
+            <td>@items.player_slot</td>
+            <td>@items.hero_id</td>
+            <td>@items.item_0</td>
+            <td>@items.item_1</td>
+            <td>@items.item_2</td>
+            <td>@items.item_3</td>
+            <td>@items.item_4</td>
+            <td>@items.item_5</td>
+            <td>@items.kills</td>
+            <td>@items.deaths</td>
+            <td>@items.assists</td>
+            <td>@items.gold</td>
+            <td>@items.last_hits</td>
+            <td>@items.denies</td>
+            <td>@items.gold_per_min</td>
+            <td>@items.xp_per_min</td>
+            <td>@items.gold_spent</td>
+            <td>@items.hero_damage</td>
+            <td>@items.tower_damage</td>
+            <td>@items.hero_healing</td>
+            <td>@items.level</td>
+            <td>@items.backpack_0</td>
+            <td>@items.backpack_1</td>
+            <td>@items.backpack_2</td>
+        </tr>
+    }
+</table>

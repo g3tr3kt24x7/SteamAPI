@@ -1,4 +1,5 @@
 ﻿using SteamAPIWebApplication.CommonClasses;
+using SteamAPIWebApplication.Models;
 using SteamAPIWebApplication.Models.BasicContents;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,16 @@ namespace SteamAPIWebApplication.Controllers
 {
     public class DotaHeroesController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         // GET: DotaHeroes
         public ActionResult Index()
         {
             List<DotaHeroes> heroes = FilterHeroName(clsCommon.GetHeroes(0));
+            if(db.heroes.ToList().Count() <= 0)
+            {
+                db.heroes.AddRange(heroes);
+                db.SaveChanges();
+            }
             return View(heroes);
         }
         public List<DotaHeroes> FilterHeroName(List<DotaHeroes> heroes)

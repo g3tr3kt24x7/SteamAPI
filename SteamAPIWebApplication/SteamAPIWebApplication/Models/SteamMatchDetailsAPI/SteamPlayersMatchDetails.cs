@@ -9,8 +9,11 @@ namespace SteamAPIWebApplication.Models.SteamMatchDetailsAPI
     {
         #region Players
         public string account_id { get; set; }
+        public string steam_account_match { get; set; }
         public string player_slot { get; set; }
+        public string player_slot_side { get; set; }
         public string hero_id { get; set; }
+        public string hero_name { get; set; }
         public string match_id { get; set; }
         #endregion
     }
