@@ -1,0 +1,25 @@
+﻿@model IEnumerable<SteamAPIWebApplication.Models.LeagueGamesAll>
+
+@{
+    ViewBag.Title = "League Games";
+}
+
+
+<div class="form-horizontal league-games-custom-bg league-games-padding-and-margin">
+    <h3>Upcoming League Games</h3>
+    @foreach (var items in Model)
+    {
+        
+        @*<li>@items.LeagueID</li>*@
+        <div class="form-group">
+            <div class="col-md-12">
+                <a href="@items.tournament_url">@items.name</a>
+            </div>
+        </div>
+        @*<li>@items.description</li>*@
+
+    }
+    <div class="text-right">
+        @Html.ActionLink("See More", "LeagueGames", "LeagueGames")
+    </div>
+</div>

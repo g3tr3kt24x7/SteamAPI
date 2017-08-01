@@ -1,0 +1,60 @@
+﻿@model SteamAPIWebApplication.Models.SteamNews.SteamPublicPersonalInfo
+<style>
+    .position-img {
+        position: absolute;
+        right: 10px;
+        top: 6px;
+    }
+    .state-online{
+        border:1px solid lawngreen;
+        color:lawngreen;
+    }
+    .state-offline{
+        border:1px solid #a74040;
+        color:#a74040;
+    }
+    .state-others{
+        border:1px solid #4669d9;
+        color:#4669d4;
+    }
+</style>
+<div class="col-md-11">
+    <ul>
+        <li style="width:169px;color:#999;margin-top:10px;">@Model.personaname</li>
+        @*<li class="text-right state-online">@Model.personastate</li>*@
+    </ul>
+</div>
+<div class="col-md-1 position-img">
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">
+            @*@User.Identity.GetUserName()*@
+            <img src="@Model.avatar" class="state-online" style="border:1px solid lawngreen" id="state-img" />
+
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="@Url.Action("Index","SteamVanityUserName")">My Profile</a></li>
+            @*<li><a href="@Url.Action("Index","SteamMatchDetails")">Match Details</a></li>*@
+            @*<li><a href="#">JavaScript</a></li>*@
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var userState = '@Model.personastate';
+        if(userState=="Online")
+        {
+            $('#state-img').removeClass("state-offline").removeClass("state-others").addClass("state-online");
+        }
+        else if(userState =="Offline")
+        {
+            $('#state-img').removeClass("state-online").removeClass("state-others").addClass("state-offline");
+        }
+        else
+        {
+            $('#state-img').removeClass("state-offline").removeClass("state-online").addClass("state-others");
+        }
+    })
+</script>
+    }

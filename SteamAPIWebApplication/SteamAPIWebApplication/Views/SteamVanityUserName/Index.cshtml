@@ -3,47 +3,46 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="row">
-    <div class="pull-right">
-        <div class="col-md-8">
-            <ul>
-                <li>@Model.svPersonalInfo.personaname</li>
-                <li style="color:lawngreen;" class="text-right">@Model.svPersonalInfo.personastate</li>
-            </ul>
-        </div>
-        <div class="col-md-4">
-            <a href="@Url.Action("Index","SteamMatchDetails", new { steamid = User.Identity.GetUserId() })">
-                <img src="@Model.svPersonalInfo.avatarmedium" /><br />
-            </a>
-        </div>
-    </div>
-</div>
-<h2>Steam Friends</h2>
+
 @*<p>@Model.svPersonalInfo.profilestate</p><br />
 <p>@Model.svPersonalInfo.profileurl</p><br/>
 <p>@Model.svPersonalInfo.communityvisibilitystate</p><br />*@
 <div class="row">
-    @for (int i = 0; i < Model.FriendsList.Count; i++)
-    {
-        @*<div class="form-group">*@
-        <div class="col-md-4">
-            <ul class="steamfriendslist steamdivbgcolor" style="display:inline-flex">
-                <li>
-                    <a href="@Url.Action("Index","SteamMatchDetails", new { id = Model.FriendsList[i].steamid })"><img src="@Model.svFriendsInfo[i].avatar" alt="@Model.svFriendsInfo[i].personaname" /></a>
-                </li>
-                @*<p>Friends Steam ID= @Model.FriendsList[i].steamid</p><br />*@
-                <li>
-                    <ul class="steamfriendslist">
-                        <li>@Model.svFriendsInfo[i].personaname</li>
-                        @*<li>Relationship= @Model.FriendsList[i].relationship </li>*@
-                        <li>Friends Since: @Model.FriendsList[i].friend_since </li>
-                    </ul>
-                    
-                    
-                    
-                </li>
-            </ul>
+    <div class="col-md-8">
+        <div class="background-custom-full background-padding">
+            @{ Html.RenderAction("MatchDetails", "SteamMatchDetails");}
         </div>
-        @*</div>*@
-    }
-</div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-horizontal  background-custom-full background-padding">
+            <h2>Steam Friends</h2>
+            @for (int i = 0; i < Model.FriendsList.Count; i++)
+            {
+                @*<div class="form-group">*@
+                @*<div class="col-md-4">*@
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <a href="@Url.Action("Index","SteamMatchDetails", new { id = Model.FriendsList[i].steamid })"><img src="@Model.svFriendsInfo[i].avatar" alt="@Model.svFriendsInfo[i].personaname" /></a>
+                    </div>
+                    @*<p>Friends Steam ID= @Model.FriendsList[i].steamid</p><br />*@
+                    <div class="col-md-10">
+                        <ul>
+                            <li style="word-wrap:break-word;">@Model.svFriendsInfo[i].personaname</li>
+                            @*<li>Relationship= @Model.FriendsList[i].relationship </li>*@
+                            @*<li>Friends Since: @Model.FriendsList[i].friend_since </li>*@
+                        </ul>
+                    </div>
+                </div>
+
+                @*</div>*@
+            }
+        </div>
+    </div>
+
+    </div>
+@*</div>*@
+@*<div class="row background-custom-full background-padding">
+    <div class="col-md-12">
+        @{ Html.RenderAction("MatchDetails","SteamMatchDetails");}
+    </div>
+</div>*@

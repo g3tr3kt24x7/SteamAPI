@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 
@@ -72,7 +73,8 @@ namespace SteamAPIWebApplication.CommonClasses
                         cost=k["cost"].Value.ToString(),
                         secret_shop=k["secret_shop"].Value.ToString(),
                         side_shop=k["side_shop"].Value.ToString(),
-                        recipe=k["recipe"].Value.ToString()
+                        recipe=k["recipe"].Value.ToString(),
+                        //localized_name = k["localized_name"].Value.ToString()
                     };
                     items.Add(FilterItems(i));
                 }
@@ -176,6 +178,12 @@ namespace SteamAPIWebApplication.CommonClasses
             string heroName = db.heroes.Where(x => x.id == heroid).FirstOrDefault().name.ToString();
             return heroName;
         }
+        public static string FilterDotaHeroImages(string heroid)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            string hero_image_sb = db.heroes.Where(x => x.id == heroid).FirstOrDefault().hero_image_sb.ToString();
+            return hero_image_sb;
+        }
         public static string convert_steamid_64bit_to_32bit(string accountid)
         {
             string result = (Convert.ToDouble(accountid) - 76561197960265728).ToString();
@@ -198,7 +206,9 @@ namespace SteamAPIWebApplication.CommonClasses
                 string abc = strSplit[1].Replace("_", " ");
                 TextInfo t = new CultureInfo("en-US", false).TextInfo;
                 abc = t.ToTitleCase(abc);
-              DotaItems item = new DotaItems() { name = abc, id = items.id, recipe=items.recipe, cost=items.cost, secret_shop=items.secret_shop, side_shop=items.side_shop };
+              DotaItems item = new DotaItems() { name = abc, id = items.id, recipe=items.recipe, cost=items.cost, secret_shop=items.secret_shop, side_shop=items.side_shop,localized_name=items.localized_name,item_image_sb = strSplit[1] + "_sb.png",
+                  item_image_full =strSplit[1]+ "_full.png",
+                  item_image_lg = strSplit[1] + "_lg.png",item_image_vert = strSplit[1] + "_vert.jpg"};
             //}
             return item;
         }
@@ -212,7 +222,20 @@ namespace SteamAPIWebApplication.CommonClasses
             }
             else
             {
-                return "No Item Found";
+                return "";
+            }
+        }
+        public static string FilterItemsImageById(string itemid)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            if (itemid != "0")
+            {
+                string itemname = db.items.Where(x => x.id == itemid).FirstOrDefault().item_image_lg.ToString();
+                return itemname;
+            }
+            else
+            {
+                return "";
             }
         }
         public static string FilterGameMode(string gamemode)
@@ -261,6 +284,50 @@ namespace SteamAPIWebApplication.CommonClasses
                     return "1v1 Mid Only";
                 case "22":
                     return "Ranked Matchmaking";
+            }
+        }
+        public static string FilterLeagueGameName(string LeagueGameName)
+        {
+            string[] tempValue = Regex.Split(LeagueGameName, "#DOTA_Item_");
+            string returnValue = tempValue[1].Replace('_', ' ');
+            TextInfo t = new CultureInfo("en-US", false).TextInfo;
+            returnValue = t.ToTitleCase(returnValue);
+            return returnValue;
+        }
+        static bool _isFirstTime = true;
+        public static string FilterLogoAndImages(int appid,string ugcid)
+        {
+            try
+            {
+                string returnValue = "";
+
+                using (dynamic SteamRemoteStorage = WebAPI.GetInterface("ISteamRemoteStorage", clsCommon.APIKey))
+                {
+                    //if (_isFirstTime)
+                    //{
+                    //    _isFirstTime = false;
+                    //}
+                    //else
+                    //{
+                        KeyValue rmStorage = SteamRemoteStorage.GetUGCFileDetails(appid: appid, ugcid: ugcid);
+                        //foreach (var r in rmStorage.Children)
+                        //{
+                        returnValue = rmStorage.Children[1].Value;
+                        //}
+                    //}
+
+                }
+                
+                return returnValue;
+            }
+            catch(WebException ex)
+            {
+                HttpWebResponse response = ex.Response as HttpWebResponse;
+                if(response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return "";
+                }
+                throw;
             }
         }
     }

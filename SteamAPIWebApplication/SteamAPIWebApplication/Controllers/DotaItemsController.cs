@@ -15,11 +15,16 @@ namespace SteamAPIWebApplication.Controllers
         // GET: DotaItems
         public ActionResult Index()
         {
-            List<DotaItems> items = clsCommon.GetIngameItems();
+            List<DotaItems> items = new List<DotaItems>();
             if(db.items.ToList().Count()<=0)
             {
+                items = clsCommon.GetIngameItems();
                 db.items.AddRange(items);
                 db.SaveChanges();
+            }
+            else
+            {
+                items = db.items.ToList();
             }
             return View(items);
         }

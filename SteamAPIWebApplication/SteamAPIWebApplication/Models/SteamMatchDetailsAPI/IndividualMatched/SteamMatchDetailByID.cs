@@ -11,6 +11,7 @@ namespace SteamAPIWebApplication.Models.SteamMatchDetailsAPI
         public string accountid { get; set; }
         public string player_slot { get; set; }
         public string hero_id { get; set; }
+        public string hero_image { get; set; }
         public string item_0 { get; set; }
         //ID of the top-left inventory item.
         public string item_1 { get; set; }

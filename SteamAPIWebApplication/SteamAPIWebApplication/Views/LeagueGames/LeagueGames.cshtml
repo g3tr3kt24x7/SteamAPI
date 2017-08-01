@@ -1,0 +1,16 @@
+﻿@model IEnumerable<SteamAPIWebApplication.Models.LeagueGamesAll>
+
+@{
+    ViewBag.Title = "League Games";
+}
+
+<h2>LeagueGames</h2>
+<ul>
+    @foreach (var items in Model)
+    {
+        <li>@items.LeagueID</li>
+        <li>@items.name</li>
+        <li>@items.description</li>
+        <li>@items.tournament_url</li>
+    }
+</ul>

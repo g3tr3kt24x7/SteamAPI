@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SteamAPIWebApplication.Models.DotaTeams.DotaTeams>
+
+@{
+    ViewBag.Title = "DotaTeams";
+}
+
+<h2>DotaTeams</h2>
+<ul>
+    @foreach (var items in Model)
+    {
+        <li><img src="@items.logo" width="64" height="64"/></li>
+        <li>@items.name (@items.tag) </li>
+        <li>@items.url</li>
+        <li>@items.player_0_account_id</li>
+        <li>@items.player_names_0</li>
+        <li>@items.player_1_account_id</li>
+        <li>@items.player_names_1</li>
+        <li>@items.player_2_account_id</li>
+        <li>@items.player_names_2</li>
+        <li>@items.player_3_account_id</li>
+        <li>@items.player_names_3</li>
+        <li>@items.player_4_account_id</li>
+        <li>@items.player_names_4</li>
+        <li>@items.player_5_account_id</li>
+        <li>@items.player_names_5</li>
+        <li>@items.player_6_account_id</li>
+        <li>@items.player_names_6</li>
+    }
+</ul>

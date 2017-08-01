@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+
 }
 @model SteamAPIWebApplication.ViewModels.SteamHomeViewModel
 <style>
@@ -21,74 +22,86 @@
         display: none;
     }
 
-    .background-custom-full {
-        background-color: #626262;
-        color: #f7f7f7;
-    }
-
-        .background-custom-full a {
-            color: #f7f7f7;
-        }
+   
 </style>
 
 
-<div class="row">
-    <h1 style="color:#f7f7f7;">New About Dota 2</h1>
-    <div class="col-md-8">
-        @foreach (var items in Model.steamNews)
-        {
-            <div class="background-custom-full" style="padding:10px;margin-top:5px;">
-                @*@items.gid<br/>*@
-                <h1>@items.title</h1><br />
-                @*@items.url<br/>*@
-                @*@items.is_external_url<br/>*@
-                <h4>@items.author</h4><br />
-                <div style="text-align:justify" class="more">@Html.Raw(items.contents)</div><br />
-                @items.feedlabel<br />
-                @*@items.date<br />*@
-                @items.feedname
-            </div>
-        }
-    </div>
-    @*<div class="col-md-4" style="margin-top:5px;">
-        <div class="background-custom-full">
-            @Html.Partial("_VanityUserName")
+<div class="col-md-8">
+    <h1>News</h1>
+
+    @foreach (var items in Model.steamNews)
+    {
+        <div class="background-custom-full" style="padding:10px;margin-top:5px;width:635px;">
+            @*@items.gid<br/>*@
+            <h1>@items.title</h1><br />
+            @*@items.url<br/>*@
+            @*@items.is_external_url<br/>*@
+            <h6 class="text-right">
+                <i class="fa fa-book">
+                    @if (items.author == "")
+                    { <span>-Anonymous</span> }
+                    else
+                    { <span>- @items.author</span>}
+                </i>
+            </h6><br />
+            <div style="text-align:justify" class="more">@Html.Raw(items.contents)</div><br />
+            <b>@items.feedlabel</b><br />
+            @*@items.date<br />*@
+            @*@items.feedname*@
         </div>
-    </div>*@
+    }
+</div>
+
+<div class="col-md-4">
+    @*<div class="form-group">
+            @{
+                if (Request.IsAuthenticated)
+                {
+                    Html.RenderAction("SteamFriendsPartial", "SteamVanityUserName");
+                }
+            }
+        </div>*@
+    <div class="form-group">
+        @{ Html.RenderAction("LeagueGamePartial", "LeagueGames"); }
+    </div>
+    <div class="form-group">
+       @{ Html.RenderAction("DotaTeamsPartial", "DotaTeams");}
+    </div>
 </div>
 @section scripts{
-    <script type="text/javascript">
-        //$(document).ready(function () {
-        //    var showChar = 100;
-        //    var ellipsestext = "...";
-        //    var moretext = "more";
-        //    var lesstext = "less";
-        //    $('.more').each(function () {
-        //        var content = $(this).html();
+    @*<script type="text/javascript">
+            $(document).ready(function () {
+                debugger;
+                var showChar = 100;
+                var ellipsestext = "...";
+                var moretext = "more";
+                var lesstext = "less";
+                $('.more').each(function () {
+                    var content = $(this).html();
 
-        //        if (content.length > showChar) {
+                    if (content.length > showChar) {
 
-        //            var c = content.substr(0, showChar);
-        //            var h = content.substr(showChar - 1, content.length - showChar);
+                        var c = content.substr(0, showChar);
+                        var h = content.substr(showChar - 1, content.length - showChar);
 
-        //            var html = c + '<span class="moreelipses">' + ellipsestext + '</span>&nbsp;<span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+                        var html = c + '<span class="moreelipses">' + ellipsestext + '</span>&nbsp;<span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
 
-        //            $(this).html(html);
-        //        }
-        //    });
-        //    $(".morelink").click(function () {
-        //        if ($(this).hasClass("less")) {
-        //            $(this).removeClass("less");
-        //            $(this).html(moretext);
-        //        } else {
-        //            $(this).addClass("less");
-        //            $(this).html(lesstext);
-        //        }
-        //        $(this).parent().prev().toggle();
-        //        $(this).prev().toggle();
-        //        return false;
-        //    });
-        //});
+                        $(this).html(html);
+                    }
+                });
+                $(".morelink").click(function () {
+                    if ($(this).hasClass("less")) {
+                        $(this).removeClass("less");
+                        $(this).html(moretext);
+                    } else {
+                        $(this).addClass("less");
+                        $(this).html(lesstext);
+                    }
+                    $(this).parent().prev().toggle();
+                    $(this).prev().toggle();
+                    return false;
+                });
+            });
 
-    </script>
+        </script>*@
 }

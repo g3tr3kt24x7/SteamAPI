@@ -24,10 +24,35 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "SteamVanityUserName", routeValues: null, htmlAttributes: new { title = "User Profile" })
+                        @*<div class="dropdown">
+                            <a href="#" class="dropdown-toggle" type="button" data-toggle="dropdown">*@
+                                @*@User.Identity.GetUserName()*@
+                                @{Html.RenderAction("SteamProfile", "SteamVanityUserName");}
+                            @*</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("UserGlobalStats","SteamVanityUserName")">My Profile</a></li>
+                                <li><a href="@Url.Action("Index","SteamMatchDetails")">Match Details</a></li>*@
+                                @*<li><a href="#">JavaScript</a></li>*@
+                                @*<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                            </ul>
+                        </div>*@
                     </li>
-                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                    @*<li>
+                        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "SteamVanityUserName", routeValues: null, htmlAttributes: new { title = "User Profile" })
+                    </li>*@
+                    
                 </ul>
+                @*<div class="dropdown">
+                    <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                        Dropdown Example
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                    </ul>
+                </div>*@
             }
         }
         else

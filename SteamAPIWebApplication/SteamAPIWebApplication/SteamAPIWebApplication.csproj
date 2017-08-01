@@ -421,7 +421,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DotaHeroesController.cs" />
     <Compile Include="Controllers\DotaItemsController.cs" />
+    <Compile Include="Controllers\DotaTeamsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeagueGamesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SteamMatchDetailsController.cs" />
     <Compile Include="Controllers\SteamVanityUserNameController.cs" />
@@ -440,15 +442,22 @@
     <Compile Include="Migrations\201706220617392_abc.Designer.cs">
       <DependentUpon>201706220617392_abc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706230411081_DotaItems.cs" />
-    <Compile Include="Migrations\201706230411081_DotaItems.Designer.cs">
-      <DependentUpon>201706230411081_DotaItems.cs</DependentUpon>
+    <Compile Include="Migrations\201708010517219_DotaHeroes.cs" />
+    <Compile Include="Migrations\201708010517219_DotaHeroes.Designer.cs">
+      <DependentUpon>201708010517219_DotaHeroes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708010539405_DotaItems.cs" />
+    <Compile Include="Migrations\201708010539405_DotaItems.Designer.cs">
+      <DependentUpon>201708010539405_DotaItems.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BasicContents\DotaHeroes.cs" />
     <Compile Include="Models\BasicContents\DotaItems.cs" />
+    <Compile Include="Models\DotaTeams\DotaTeams.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LeagueGamesAll.cs" />
+    <Compile Include="Models\LeagueGames\LiveGamesDota.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SteamMatchDetailsAPI\IndividualMatched\SteamMatchDetailByID.cs" />
     <Compile Include="Models\SteamMatchDetailsAPI\SteamMatchDetailsAPI.cs" />
@@ -468,12 +477,20 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -526,6 +543,13 @@
     <Content Include="Views\DotaHeroes\Index.cshtml" />
     <Content Include="Views\DotaItems\Index.cshtml" />
     <Content Include="Views\SteamMatchDetails\GetMatchDetailById.cshtml" />
+    <Content Include="Views\SteamVanityUserName\SteamFriendsPartial.cshtml" />
+    <Content Include="Views\LeagueGames\LeagueGames.cshtml" />
+    <Content Include="Views\LeagueGames\LeagueGamePartial.cshtml" />
+    <Content Include="Views\DotaTeams\DotaTeams.cshtml" />
+    <Content Include="Views\DotaTeams\DotaTeamsPartial.cshtml" />
+    <Content Include="Views\SteamVanityUserName\SteamProfile.cshtml" />
+    <Content Include="Views\SteamMatchDetails\MatchDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -548,8 +572,11 @@
     <EmbeddedResource Include="Migrations\201706220617392_abc.resx">
       <DependentUpon>201706220617392_abc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706230411081_DotaItems.resx">
-      <DependentUpon>201706230411081_DotaItems.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708010517219_DotaHeroes.resx">
+      <DependentUpon>201708010517219_DotaHeroes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708010539405_DotaItems.resx">
+      <DependentUpon>201708010539405_DotaItems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

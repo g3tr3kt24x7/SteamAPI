@@ -15,6 +15,7 @@ namespace SteamAPIWebApplication.Models.SteamMatchDetailsAPI
         public string hero_id { get; set; }
         public string hero_name { get; set; }
         public string match_id { get; set; }
+        public string hero_image_sb { get; set; }
         #endregion
     }
 }

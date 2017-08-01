@@ -1,0 +1,31 @@
+﻿@model SteamAPIWebApplication.ViewModels.SteamFriendsViewModel
+@using Microsoft.AspNet.Identity
+
+    @for (int i = 0; i < Model.FriendsList.Count; i++)
+    {
+        @*<div class="form-group">*@
+
+            <ul class="steamfriendslist steamdivbgcolor" style="display:inline-flex">
+                <li>
+                    @Url.Action("Index", "SteamMatchDetails", new { id = Model.FriendsList[i].steamid })
+                    <a href="#"><img src="@Model.svFriendsInfo[i].avatar" alt="@Model.svFriendsInfo[i].personaname" /></a>
+                </li>
+                @*<p>Friends Steam ID= @Model.FriendsList[i].steamid</p><br />*@
+                <li>
+                    <ul class="steamfriendslist">
+                        <li>@Model.svFriendsInfo[i].personaname</li>
+                        @*<li>Relationship= @Model.FriendsList[i].relationship </li>*@
+                        @*<li>Friends Since: @Model.FriendsList[i].friend_since </li>*@
+                    </ul>
+
+
+
+                </li>
+            </ul>
+          
+        @*</div>*@
+    }
+<div class="col-md-12 text-right">
+    @Html.ActionLink("More", "Index", "SteamVanityUserName")
+</div>
+

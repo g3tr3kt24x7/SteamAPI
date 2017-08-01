@@ -11,10 +11,10 @@
         @*<ul>*@
             @foreach (var items in Model)
             {
-                if (items.secret_shop == "0")
+                if (items.secret_shop == "0" && !items.name.Contains("Recipe"))
                 {
                     <div class="col-md-2">
-                        <img src="#" width="32" height="32" alt="@items.name" title='item name = @items.name and cost = @items.cost' />
+                        <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_image_lg" width="32" height="32" alt="@items.name" title='item name = @items.name and cost = @items.cost' />
                     </div>
                 }
             }
@@ -28,7 +28,7 @@
                 if (items.secret_shop == "1")
                 {
                     <div class="col-md-2">
-                        <img src="#" width="32" height="32" alt="@items.name" title='item name = @items.name and cost = @items.cost' />
+                        <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_image_lg" width="32" height="32" alt="@items.name" title='item name = @items.name and cost = @items.cost' />
                     </div>
                     
                 }
@@ -43,7 +43,7 @@
                 if (items.side_shop == "1")
                 {
                     <div class="col-md-2">
-                        <img src="#" width="32" height="32" alt="@items.name" title='item name = @items.name and cost = @items.cost' />
+                        <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_image_lg" width="32" height="32" alt="@items.name" title='item name = @items.name and cost = @items.cost' />
                     </div>
                 }
 

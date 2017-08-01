@@ -7,13 +7,13 @@ namespace SteamAPIWebApplication.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class DotaItems : IMigrationMetadata
+    public sealed partial class DotaHeroes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DotaItems));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DotaHeroes));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706230411081_DotaItems"; }
+            get { return "201708010517219_DotaHeroes"; }
         }
         
         string IMigrationMetadata.Source

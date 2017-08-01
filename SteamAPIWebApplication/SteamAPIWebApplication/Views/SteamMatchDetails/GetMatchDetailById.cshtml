@@ -2,26 +2,51 @@
 @{
     ViewBag.Title = "GetMatchDetailById";
 }
+<style>
+    .radiantVictory {
+        color: lawngreen;
+    }
 
-<h2>GetMatchDetailById</h2>
-@Model.steamMatchDetailsIDIndividual.radiant_win<br />
-@Model.steamMatchDetailsIDIndividual.start_time<br />
-@Model.steamMatchDetailsIDIndividual.duration<br />
-@Model.steamMatchDetailsIDIndividual.first_blood_time<br />
-@Model.steamMatchDetailsIDIndividual.radiant_score<br />
-@Model.steamMatchDetailsIDIndividual.dire_score<br />
-@Model.steamMatchDetailsIDIndividual.game_mode
+    .direVictory {
+        color: darkred;
+    }
+    .backpack{
+        background:#8f8f8f no-repeat;
+        filter:grayscale(100%);
+    }
+    img{
+        background:#454545;
+    }
+</style>
+<a href="@Url.Action("Index","SteamMatchDetails")"><h2>Match Detail</h2></a>
+<div>
+    <div style="text-align:center">
+        <h2 class="radiantVictory" id="victory">@Model.steamMatchDetailsIDIndividual.radiant_win</h2>
+
+        @Model.steamMatchDetailsIDIndividual.duration
+    </div>
+    @*@Model.steamMatchDetailsIDIndividual.start_time
+        @Model.steamMatchDetailsIDIndividual.first_blood_time<br />
+        @Model.steamMatchDetailsIDIndividual.radiant_score<br />
+        @Model.steamMatchDetailsIDIndividual.dire_score<br />*@
+    <div class="text-right">
+        @Model.steamMatchDetailsIDIndividual.game_mode
+    </div>
+</div>
+
 <table border="1">
     <tr>
+        <th>
+            Radiant
+        </th>
+        <th>
+            @Model.steamMatchDetailsIDIndividual.radiant_score<br />
+        </th>
+    </tr>
+    <tr>
         <td>Account Id</td>
-        <td>Player Slot </td>
         <td>Hero Id</td>
-        <td>Item 0</td>
-        <td>Item 1</td>
-        <td>Item 2</td>
-        <td>Item 3</td>
-        <td>Item 4</td>
-        <td>Item 5</td>
+
         <td>Kills</td>
         <td>Deaths</td>
         <td>Assists</td>
@@ -30,43 +55,132 @@
         <td>Denies</td>
         <td>GPM</td>
         <td>XPM</td>
+        <td>Item</td>
+                  
         <td>Gold Spent</td>
         <td>Hero Damage</td>
         <td>Tower Damage</td>
         <td>Hero Healing</td>
         <td>Level</td>
-        <td>Backpack 0</td>
-        <td>Backpack 1</td>
-        <td>Backpack 2</td>
+
     </tr>
     @foreach (var items in Model.steamMatchDetails)
     {
-        <tr>
-            <td>@items.accountid</td>
-            <td>@items.player_slot</td>
-            <td>@items.hero_id</td>
-            <td>@items.item_0</td>
-            <td>@items.item_1</td>
-            <td>@items.item_2</td>
-            <td>@items.item_3</td>
-            <td>@items.item_4</td>
-            <td>@items.item_5</td>
-            <td>@items.kills</td>
-            <td>@items.deaths</td>
-            <td>@items.assists</td>
-            <td>@items.gold</td>
-            <td>@items.last_hits</td>
-            <td>@items.denies</td>
-            <td>@items.gold_per_min</td>
-            <td>@items.xp_per_min</td>
-            <td>@items.gold_spent</td>
-            <td>@items.hero_damage</td>
-            <td>@items.tower_damage</td>
-            <td>@items.hero_healing</td>
-            <td>@items.level</td>
-            <td>@items.backpack_0</td>
-            <td>@items.backpack_1</td>
-            <td>@items.backpack_2</td>
-        </tr>
+        if (items.player_slot == "Radiant")
+        {
+
+            <tr>
+                <td>@items.accountid</td>
+
+                <td><img src="http://cdn.dota2.com/apps/dota2/images/heroes/@items.hero_image" title="" alt="" /></td>
+
+                <td>@items.kills</td>
+                <td>@items.deaths</td>
+                <td>@items.assists</td>
+                <td>@items.gold</td>
+                <td>@items.last_hits</td>
+                <td>@items.denies</td>
+                <td>@items.gold_per_min</td>
+                <td>@items.xp_per_min</td>
+                <td style="display: inline-flex">
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_0" width="32" height="32" title="@items.item_0" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_1" width="32" height="32" title="@items.item_1" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_2" width="32" height="32" title="@items.item_2" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_3" width="32" height="32" title="@items.item_3" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_4" width="32" height="32" title="@items.item_4" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_5" width="32" height="32" title="@items.item_5" onerror="this.style.display ='none'"/>
+                </td>
+
+                <td style="display: inline-flex" class="backpack">
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.backpack_0" width="32" height="32" title="@items.backpack_0" onerror="this.style.display ='none'" />
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.backpack_1" width="32" height="32" title="@items.backpack_1" onerror="this.style.display ='none'"  />
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.backpack_2" width="32" height="32" title="@items.backpack_2" onerror="this.style.display ='none'" />
+                </td>
+                <td>@items.gold_spent</td>
+                <td>@items.hero_damage</td>
+                <td>@items.tower_damage</td>
+                <td>@items.hero_healing</td>
+                <td>@items.level</td>
+
+            </tr>
+        }
+    }
+    <tr>
+        <th>Dire</th>
+        <th>@Model.steamMatchDetailsIDIndividual.dire_score<br /></th>
+    </tr>
+    <tr>
+        <td>Account Id</td>
+        <td>Hero Id</td>
+
+        <td>Kills</td>
+        <td>Deaths</td>
+        <td>Assists</td>
+        <td>Gold</td>
+        <td>Last Hits</td>
+        <td>Denies</td>
+        <td>GPM</td>
+        <td>XPM</td>
+        <td>Item</td>
+
+        <td>Gold Spent</td>
+        <td>Hero Damage</td>
+        <td>Tower Damage</td>
+        <td>Hero Healing</td>
+        <td>Level</td>
+
+    </tr>
+    @foreach (var items in Model.steamMatchDetails)
+    {
+        if (items.player_slot == "Dire")
+        {
+            <tr>
+                <td>@items.accountid</td>
+
+                <td><img src="http://cdn.dota2.com/apps/dota2/images/heroes/@items.hero_image" title="" alt="" /></td>
+
+                <td>@items.kills</td>
+                <td>@items.deaths</td>
+                <td>@items.assists</td>
+                <td>@items.gold</td>
+                <td>@items.last_hits</td>
+                <td>@items.denies</td>
+                <td>@items.gold_per_min</td>
+                <td>@items.xp_per_min</td>
+                <td style="display: inline-flex">
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_0" width="32" height="32" title="@items.item_0" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_1" width="32" height="32" title="@items.item_1" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_2" width="32" height="32" title="@items.item_2" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_3" width="32" height="32" title="@items.item_3" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_4" width="32" height="32" title="@items.item_4" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.item_5" width="32" height="32" title="@items.item_5" onerror="this.style.display ='none'"/>
+                </td>
+
+                <td style="display: inline-flex" class="backpack">
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.backpack_0" width="32" height="32" title="@items.backpack_0" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.backpack_1" width="32" height="32" title="@items.backpack_1" onerror="this.style.display ='none'"/>
+                    <img src="http://cdn.dota2.com/apps/dota2/images/items/@items.backpack_2" width="32" height="32" title="@items.backpack_2" onerror="this.style.display ='none'"/>
+                </td>
+                <td>@items.gold_spent</td>
+                <td>@items.hero_damage</td>
+                <td>@items.tower_damage</td>
+                <td>@items.hero_healing</td>
+                <td>@items.level</td>
+
+            </tr>
+        }
     }
 </table>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var victory = '@Model.steamMatchDetailsIDIndividual.radiant_win';
+            if (victory == "Radiant Victory") {
+                $('#victory').removeClass('direVictory').addClass('radiantVictory');
+            }
+            else {
+                $('#victory').removeClass('radiantVictory').addClass('direVictory');
+            }
+        });
+    </script>
+}

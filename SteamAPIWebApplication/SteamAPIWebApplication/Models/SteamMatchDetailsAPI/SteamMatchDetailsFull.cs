@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SteamAPIWebApplication.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,6 +24,7 @@ namespace SteamAPIWebApplication.Models.SteamMatchDetailsAPI
         //8 - 1v1 Solo Mid
         public string lobby_type { get; set; }
         public string lobby_type_name { get; set; }
+        public SteamMatchDetailViewModel MatchDetailById { get; set; }
         #endregion
     }
 }
