@@ -1,0 +1,22 @@
+﻿body {
+}
+.home-heading{
+    color:white;
+}
+ iframe {
+        width: 100%;
+        height: 500px;
+    }
+
+    .more img {
+        width: 100%;
+    }
+
+    a.morelink {
+        text-decoration: none;
+        outline: none;
+    }
+
+    .morecontent span {
+        display: none;
+    }

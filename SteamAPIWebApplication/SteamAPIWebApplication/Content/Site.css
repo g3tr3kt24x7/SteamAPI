@@ -1,8 +1,15 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color:#828282;
+    /*background-color: #828282;*/
+    background: #828282 url('../images/dota_2_logo_wallpaper_download.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color:white;
 }
+html{
+    
+}
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -27,73 +34,157 @@ textarea {
 ul li {
     list-style: none;
 }
-a{
-    color:white;
-    text-decoration:none;
+
+a {
+    color: white;
+    text-decoration: none;
 }
+
 .steamfriendslist {
     list-style: none;
 }
 
 .steamdivbgcolor {
-    background:#e8e8e8 no-repeat;
+    background: #e8e8e8 no-repeat;
     padding: 10px;
-    width:100%;
+    width: 100%;
 }
-.steamdivbgcolor:hover{
-    box-shadow:2px 2px 2px 2px #c3c3c3 inset;
-    cursor:pointer;
+
+.steamdivbgcolor:hover {
+        box-shadow: 2px 2px 2px 2px #c3c3c3 inset;
+        cursor: pointer;
 }
 
 .bodybackgroundcolor {
-   background: rgba(76,76,76,1);
-background: -moz-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 59%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
-background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(76,76,76,1)), color-stop(0%, rgba(89,89,89,1)), color-stop(19%, rgba(102,102,102,1)), color-stop(39%, rgba(71,71,71,1)), color-stop(59%, rgba(17,17,17,1)), color-stop(76%, rgba(43,43,43,1)), color-stop(91%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
-background: -webkit-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 59%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
-background: -o-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 59%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
-background: -ms-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 59%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
-background: linear-gradient(135deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 59%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1 );
+    background: rgba(76,76,76,1);
+    background: -moz-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 59%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(76,76,76,1)), color-stop(0%, rgba(89,89,89,1)), color-stop(19%, rgba(102,102,102,1)), color-stop(39%, rgba(71,71,71,1)), color-stop(59%, rgba(17,17,17,1)), color-stop(76%, rgba(43,43,43,1)), color-stop(91%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 59%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 59%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 59%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    background: linear-gradient(135deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 59%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1 );
 }
-.navbar-inverse .navbar-nav>li>div>a{
+
+.navbar-inverse .navbar-nav > li > div > a {
     color: #999;
 }
-.navbar-inverse .navbar-nav>li>div>a:hover{
-     background-color:#e0dede;
-     color:#999;
-}
-.nav>li>div>a {
+
+    .navbar-inverse .navbar-nav > li > div > a:hover {
+        background-color: #e0dede;
+        color: #999;
+    }
+
+.nav > li > div > a {
     position: relative;
     display: block;
     padding: 15px 15px;
-    text-decoration:none;
+    text-decoration: none;
 }
 
-.navbar-inverse .navbar-nav>li>a:hover{
-     background-color:#e0dede;
-     color:#999;
- }
- .background-custom-full,.dota-teams-custom-bg,.league-games-custom-bg {
-        background-color: #272626;
-        color: #fff;
-        /*transition:box-shadow 2s;*/
-    }
- .background-padding{
-     padding:10px;
- }
-        /*.background-custom-full:hover {
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #e0dede;
+    color: #999;
+}
+
+.background-custom-full, .dota-teams-custom-bg, .league-games-custom-bg {
+    background-color: #272626;
+    color: #fff;
+    /*transition:box-shadow 2s;*/
+}
+
+.background-padding {
+    padding: 10px;
+}
+/*.background-custom-full:hover {
             -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
             -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
             box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
         }*/
 
-        .background-custom-full a {
-            color: #4a4a4a;
-        }
-        .dota-teams-padding-and-margin{
-             padding:10px;
-        }
-        .league-games-padding-and-margin{
-            padding:10px;
-            margin-top:69px;
-        }
+.background-custom-full a {
+    color: #4a4a4a;
+}
+
+.dota-teams-padding-and-margin {
+    padding: 10px;
+}
+
+.league-games-padding-and-margin {
+    padding: 10px;
+    margin-top: 69px;
+}
+
+/*.sidebar2 {
+    background-color: #1a1f27;
+    padding: 0px !important;
+    box-shadow: 2px 2px 5px #262a35;
+    z-index: 1000;
+    height: 100%;
+    position: fixed;
+
+}
+.logo {
+    min-height:200px;
+    color:#afb1b5;
+}
+.logo>img {
+    margin-top: 30px;
+    padding: 1px;
+    border: 3px solid #F17153;
+    border-radius: 100%;
+    background-color: #fff;
+}
+.btn.Add-friend
+{
+  background-color:#F17153;
+  border: 1px solid #50e6df;
+  color:#eee;
+}
+.btn.Add-friend:hover,.btn.Add-friend:active,.btn.Add-friend:active:focus,.btn.Add-friend:active:hover,.btn.Add-friend:visited,.btn.Add-friend:focus
+{
+  background-color:#F17153;
+  border: 0.5px solid transparent;
+  color:white;
+  outline:none;
+  font-weight:600;
+}
+.coins
+{
+  display:inline-block;
+  font-size:20px;
+font-family:'"Helvetica Neue",Helvetica,Arial,sans-serif';
+}
+.list {
+    color: #eee;
+    list-style: none;
+    padding-left: 0px;
+}
+li:nth-child(odd) {
+    background-color:#13171d;
+}
+li>i {margin-right:15px;
+}
+.list> li {
+    padding: 15px 0px 15px 40px;
+    font-size: 16px;
+    font-weight:lighter;
+}
+.list>li:hover {
+
+    color: white;
+    box-shadow:1px 1px 10px 1px #50e6df inset;
+    transition: padding-left 0.2s linear;
+    padding-left: 60px;
+
+}*/
+/*body
+{
+    background-image: url("http://allgames4.me/wp-content/uploads/2014/11/counter_strike_source_.jpg");
+    background-size:cover;
+    
+   }*/
+/*.main-content{ 
+    color:#fff; 
+    text-align:center;
+}*/

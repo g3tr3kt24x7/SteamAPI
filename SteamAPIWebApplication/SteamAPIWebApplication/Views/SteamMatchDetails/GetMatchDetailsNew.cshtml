@@ -1,0 +1,93 @@
+﻿@model SteamAPIWebApplication.Models.SteamMatchDetailsAPI.SteamMatchDetailsAPI
+@using Microsoft.AspNet.Identity
+@using SteamAPIWebApplication.CommonClasses
+@*SteamMatchDetailsAPI*@
+@{
+    Layout = null;
+}
+<style>
+    ul li {
+        display: inline;
+    }
+
+    .wonmatch {
+        color: lawngreen;
+    }
+
+    .lostmatch {
+        color: darkred;
+    }
+</style>
+<table cellspacing="10" cellpadding="10">
+    <tr>
+        <th>MatchId</th>
+        <th>Hero Played</th>
+        <th>Lobby</th>
+        <th>Radiant/Dire</th>
+        <th>Won/Loss Match</th>
+    </tr>
+    @foreach (var items in Model.players)
+    {
+
+        //if (User.Identity.GetUserId() == clsCommon.convert_steamid_32bit_to_64bit(Convert.ToUInt64(items.account_id)))
+        //{
+            <tr>
+                <td><a href="@Url.Action("GetMatchDetailById", "SteamMatchDetails", new { matchid = items.match_id })" id="@items.match_id">@items.match_id</a></td>
+                <td><img src="http://cdn.dota2.com/apps/dota2/images/heroes/@items.hero_image_sb" title="" alt="@items.hero_name"></td>
+
+                <td>@items.lobby_name</td>
+                <td>@items.player_slot_side</td>
+                <td>
+                    @if (items.player_slot_side == "Radiant")
+                    {
+                        if (items.MatchDetailById.steamMatchDetailsIDIndividual.radiant_win == "1")
+                        {
+                            <span class="wonmatch">Won Match</span>
+                        }
+                        else
+                        {
+                            <span class="lostmatch">Loss Match</span>
+                        }
+                    }
+                    else
+                    {
+                        if (items.MatchDetailById.steamMatchDetailsIDIndividual.radiant_win == "0")
+                        {
+                            <span class="wonmatch">Won Match</span>
+                        }
+                        else
+                        {
+                            <span class="lostmatch">Loss Match</span>
+                        }
+                    }
+                </td>
+
+            </tr>
+        @*}*@
+
+    }
+</table>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var i=0;
+            var count = @Model.matches.Count;
+            $.each(@Model.matches,function(items){
+                if(items.MatchDetailById.steamMatchDetailsIDIndividual.radiant_win=="0")
+                {
+                    $('.wonmatch').removeClass('wonmatch').addClass('lostmatch')
+                }
+            });
+            @*for(i =0;i<count;i++)
+            {
+                var i = 0;
+                if('@Model.matches.MatchDetailById.steamMatchDetailsIDIndividual.radiant_win'=="0")
+                {
+                    $('.wonmatch').removeClass('wonmatch').addClass('lostmatch')
+                }
+
+            }*@
+
+        })
+    </script>
+}

@@ -1,6 +1,10 @@
 ﻿@model SteamAPIWebApplication.Models.SteamMatchDetailsAPI.SteamMatchDetailsAPI
 @using SteamAPIWebApplication.CommonClasses
 @using Microsoft.AspNet.Identity
+@{
+    Layout = null;
+    ViewBag.Title = User.Identity.GetUserName() + " - Profile";
+}
 <style>
     ul li {
         display: inline;
@@ -20,61 +24,66 @@
         <th>MatchId</th>
         <th>Hero Played</th>
 
-        <th>Lobby</th>
+        @*<th>Lobby</th>*@
         <th>Radiant/Dire</th>
         <th>Won/Loss Match</th>
     </tr>
-    @foreach (var items in Model.matches)
+    @*@foreach (var items in Model.matches)
+        {*@
+    <tr>
+        @{
+            int i = 0;
+            foreach (var item in Model.players)
             {
-        <tr>
-            @foreach (var item in Model.players)
+                //if (item.match_id == items.match_id)
+                //{
+                if (User.Identity.GetUserId() == clsCommon.convert_steamid_32bit_to_64bit(Convert.ToUInt64(item.account_id)))
                 {
-                    if (item.match_id == items.match_id)
-                    {
-                        if (User.Identity.GetUserId() == clsCommon.convert_steamid_32bit_to_64bit(Convert.ToUInt64(item.account_id)))
-                        {
 
-                        @*<li>Account id = @item.account_id</li>*@
-                        @*<td>@item.steam_account_match</td>*@
-                        @*<td>Hero Id = @item.hero_id</td>*@
-                        <td><a href="@Url.Action("GetMatchDetailById", "SteamMatchDetails", new { matchid = items.match_id })" id="@items.match_id">@items.match_id</a></td>
-                        <td><img src="http://cdn.dota2.com/apps/dota2/images/heroes/@item.hero_image_sb" title="" alt="@item.hero_name"></td>
+                    @*<li>Account id = @item.account_id</li>*@
+                    @*<td>@item.steam_account_match</td>*@
+                    @*<td>Hero Id = @item.hero_id</td>*@
+                    <td><a href="@Url.Action("GetMatchDetailById", "SteamMatchDetails", new { matchid = item.match_id })" id="@item.match_id">@item.match_id</a></td>
+                    <td><img src="http://cdn.dota2.com/apps/dota2/images/heroes/@item.hero_image_sb" title="" alt="@item.hero_name"></td>
 
-                        <td>@items.lobby_type_name</td>
-                        <td>@item.player_slot_side</td>
-                                    <td>
-                                        @if (item.player_slot_side == "Radiant")
-                                        {
-                                            if (items.MatchDetailById.steamMatchDetailsIDIndividual.radiant_win == "1")
-                                            {
-                                                <span class="wonmatch">Won Match</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="lostmatch">Loss Match</span>
-                                            }
-                                        }
-                                        else
-                                        {
-                                            if (items.MatchDetailById.steamMatchDetailsIDIndividual.radiant_win == "0")
-                                            {
-                                                <span class="wonmatch">Won Match</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="lostmatch">Loss Match</span>
-                                            }
-                                        }
-                                    </td>
-                    }
+                    @*<td>@items.lobby_type_name</td>*@
+                    <td>@item.player_slot_side</td>
+                        <td>
+                            @if (item.player_slot_side == "Radiant")
+                            {
+                                if (item.MatchDetailById.steamMatchDetailsIDIndividual.radiant_win == "1")
+                                {
+                                    <span class="wonmatch">Won Match</span>
+                                }
+                                else
+                                {
+                                    <span class="lostmatch">Loss Match</span>
+                                }
+                            }
+                            else
+                            {
+                                if (item.MatchDetailById.steamMatchDetailsIDIndividual.radiant_win == "0")
+                                {
+                                    <span class="wonmatch">Won Match</span>
+                                }
+                                else
+                                {
+                                    <span class="lostmatch">Loss Match</span>
+                                }
+                            }
+                        </td>
+                    //}
                 }
                 //else
                 //{
                 //    break;
                 //}
+                i++;
             }
-        </tr>
-    }
+
+            @*}*@
+        }
+    </tr> 
 </table>
 @section Scripts{
     <script type="text/javascript">

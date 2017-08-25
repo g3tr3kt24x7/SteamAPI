@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SteamAPIWebApplication.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,8 @@ namespace SteamAPIWebApplication.Models.SteamMatchDetailsAPI
         public string hero_name { get; set; }
         public string match_id { get; set; }
         public string hero_image_sb { get; set; }
+        public SteamMatchDetailViewModel MatchDetailById { get; set; }
+        public string lobby_name { get; set; }
         #endregion
     }
 }

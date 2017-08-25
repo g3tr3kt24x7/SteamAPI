@@ -294,7 +294,7 @@ namespace SteamAPIWebApplication.CommonClasses
             returnValue = t.ToTitleCase(returnValue);
             return returnValue;
         }
-        static bool _isFirstTime = true;
+        //static bool _isFirstTime = true;
         public static string FilterLogoAndImages(int appid,string ugcid)
         {
             try

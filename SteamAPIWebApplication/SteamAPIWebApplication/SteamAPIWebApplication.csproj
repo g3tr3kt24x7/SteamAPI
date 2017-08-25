@@ -49,6 +49,10 @@
       <HintPath>..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DotA2StatsParser, Version=0.1.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotA2StatsParser.0.1.0.3\lib\net45\DotA2StatsParser.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="en-html2enml, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\evernote-cloud-sdk-windows.1.0.8\lib\net40\en-html2enml.dll</HintPath>
       <Private>True</Private>
@@ -65,13 +69,17 @@
       <HintPath>..\packages\evernote-cloud-sdk-windows.1.0.8\lib\net40\EvernoteSDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin.Security.Providers.ArcGISOnline, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -282,6 +290,14 @@
       <HintPath>..\packages\Owin.Security.Providers.Yammer.2.13.0\lib\net45\Owin.Security.Providers.Yammer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PreMailer.Net, Version=1.2.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PreMailer.Net.1.2.7\lib\net40\PreMailer.Net.dll</HintPath>
       <Private>True</Private>
@@ -427,6 +443,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SteamMatchDetailsController.cs" />
     <Compile Include="Controllers\SteamVanityUserNameController.cs" />
+    <Compile Include="Dota2Parser\ParseHeroes.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -459,6 +476,7 @@
     <Compile Include="Models\LeagueGamesAll.cs" />
     <Compile Include="Models\LeagueGames\LiveGamesDota.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Steamkittest.cs" />
     <Compile Include="Models\SteamMatchDetailsAPI\IndividualMatched\SteamMatchDetailByID.cs" />
     <Compile Include="Models\SteamMatchDetailsAPI\SteamMatchDetailsAPI.cs" />
     <Compile Include="Models\SteamMatchDetailsAPI\SteamMatchDetailsFull.cs" />
@@ -479,11 +497,26 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\home-new-style.css" />
+    <Content Include="Content\loader.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\tooltipster\css\plugins\tooltipster\sideTip\themes\tooltipster-sideTip-borderless.min.css" />
+    <Content Include="Content\tooltipster\css\plugins\tooltipster\sideTip\themes\tooltipster-sideTip-light.min.css" />
+    <Content Include="Content\tooltipster\css\plugins\tooltipster\sideTip\themes\tooltipster-sideTip-noir.min.css" />
+    <Content Include="Content\tooltipster\css\plugins\tooltipster\sideTip\themes\tooltipster-sideTip-punk.min.css" />
+    <Content Include="Content\tooltipster\css\plugins\tooltipster\sideTip\themes\tooltipster-sideTip-shadow.min.css" />
+    <Content Include="Content\tooltipster\css\tooltipster.bundle.css" />
+    <Content Include="Content\tooltipster\css\tooltipster.bundle.min.css" />
+    <Content Include="Content\tooltipster\css\tooltipster.main.css" />
+    <Content Include="Content\tooltipster\css\tooltipster.main.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\dota-logo-32x32.png" />
+    <Content Include="Images\dota_2_logo_wallpaper_download.jpg" />
+    <Content Include="Images\favicon-32x32.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\FontAwesome.otf" />
@@ -491,6 +524,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="Properties\PublishProfiles\Dota-stats.pubxml" />
+    <None Include="Properties\PublishProfiles\WebDeployDotaStats.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -502,8 +537,16 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tooltipster\js\plugins\tooltipster\SVG\tooltipster-SVG.js" />
+    <Content Include="Scripts\tooltipster\js\plugins\tooltipster\SVG\tooltipster-SVG.min.js" />
+    <Content Include="Scripts\tooltipster\js\tooltipster.bundle.js" />
+    <Content Include="Scripts\tooltipster\js\tooltipster.bundle.min.js" />
+    <Content Include="Scripts\tooltipster\js\tooltipster.main.js" />
+    <Content Include="Scripts\tooltipster\js\tooltipster.main.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -550,6 +593,9 @@
     <Content Include="Views\DotaTeams\DotaTeamsPartial.cshtml" />
     <Content Include="Views\SteamVanityUserName\SteamProfile.cshtml" />
     <Content Include="Views\SteamMatchDetails\MatchDetails.cshtml" />
+    <Content Include="Views\SteamMatchDetails\GetMatchDetailsNew.cshtml" />
+    <Content Include="Views\DotaHeroes\HeroDesc.cshtml" />
+    <Content Include="Views\SteamMatchDetails\GetMatchDetailsFull.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

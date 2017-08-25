@@ -1,13 +1,58 @@
 ﻿@model List<SteamAPIWebApplication.Models.BasicContents.DotaHeroes>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Heroes";
 }
 
 <h2>Index</h2>
 @foreach (var items in Model)
 {
     <div class="col-md-1">
-        <img src='http://cdn.dota2.com/apps/dota2/images/heroes/@items.hero_image_sb' width="59" height="36" alt="@items.name" title='hero name = @items.name' />
+        <img src='http://cdn.dota2.com/apps/dota2/images/heroes/@items.hero_image_sb' width="59" height="36" alt="@items.name" class="tool" title="@items.name"/>
+        @*data-tooltip-content="@Url.Action("HeroDesc", "DotaHeroes")"*@
+        @*title='@items.name'*@
         @*<li>@items.localized_name</li>*@
     </div>
 }
+@section Scripts{
+    <script type="text/javascript">
+        @*$(document).tooltip({
+            items: '.tooltip',
+            tooltipClass: 'preview-tip',
+            position: { my: "left top", at: "right center" },
+            content: function (callback) {
+                $.get('@Url.Action("HeroDesc","DotaHeroes")', {}, function (data) {
+                    callback(data);
+                })
+            }
+        });*@
+        $(document).ready(function () {
+            $('.tool').tooltipster({
+                theme: 'tooltipster-borderless',
+                animation: 'fade',
+                side:'right'
+            })
+        });
+        @*$(document).ready(function () {
+         
+            $('.tool').tooltipster({
+                theme: 'tooltipster-borderless',
+                animation: 'fade',
+                content: 'Loading...',
+                contentAsHTML: true,
+                side: "right",
+                functionBefore: function (instance, helper) {
+                    var $origin = $(helper.origin);
+                    if ($origin.data('loaded') !== true) {
+                        $.get('@Url.Action("HeroDesc","DotaHeroes",new { heroid = Model[0].id })', function (data) {
+                            instance.content(data);
+                            $origin.data('loaded', true);
+                        });
+                    }
+                }
+            });
+            //$('.tool').tooltipster({
+
+            //});
+        });*@
+    </script>
+    }

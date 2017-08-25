@@ -19,6 +19,10 @@ namespace SteamAPIWebApplication
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
+            bundles.Add(new ScriptBundle("~/bundles/tooltipster").IncludeDirectory
+                (
+                    "~/Scripts/tooltipster/js","tooltipster*"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
@@ -26,7 +30,12 @@ namespace SteamAPIWebApplication
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/home-new-style.css",
+                      "~/Content/loader.css"));
+            bundles.Add(new StyleBundle("~/Content/toolstipster").IncludeDirectory(
+                    "~/Content/tooltipster/css","tooltipster*"
+                ));
         }
     }
 }

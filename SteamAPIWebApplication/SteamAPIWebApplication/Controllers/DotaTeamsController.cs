@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,11 +17,11 @@ namespace SteamAPIWebApplication.Controllers
         public ActionResult DotaTeams()
         {
             List<DotaTeams> dt = new List<DotaTeams>();
-            using (dynamic steamDotaTeams = WebAPI.GetInterface("IDOTA2Match_570", clsCommon.APIKey))
+            using (dynamic steamDotaTeams = WebAPI.GetAsyncInterface("IDOTA2Match_570", clsCommon.APIKey))
             {
                 
-                KeyValue kvDotaTeams = steamDotaTeams.GetTeamInfoByTeamID();
-                foreach(var kDt in kvDotaTeams["teams"].Children)
+                Task<KeyValue> kvDotaTeams = steamDotaTeams.GetTeamInfoByTeamID();
+                foreach(var kDt in kvDotaTeams.Result["teams"].Children)
                 {
                     DotaTeams d = new DotaTeams()
                     {

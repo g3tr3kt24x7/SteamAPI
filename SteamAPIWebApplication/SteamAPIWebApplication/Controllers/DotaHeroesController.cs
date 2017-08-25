@@ -8,6 +8,14 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
+using DotA2StatsParser.Model.Dotabuff;
+using Microsoft.AspNet.Identity;
+using DotA2StatsParser.Model.HealthCheck.Interfaces;
+using DotA2StatsParser.Model.Dotabuff.Interfaces;
+using DotA2StatsParser.Model.Yasp.Interfaces;
+
+using SteamKit2;
+using PagedList;
 
 namespace SteamAPIWebApplication.Controllers
 {
@@ -28,6 +36,7 @@ namespace SteamAPIWebApplication.Controllers
             {
                 heroes = db.heroes.ToList();
             }
+            //test();
             return View(heroes);
         }
         public List<DotaHeroes> FilterHeroName(List<DotaHeroes> heroes)
@@ -44,6 +53,12 @@ namespace SteamAPIWebApplication.Controllers
             return hero;
 
         }
+        //[ChildActionOnly]
+        public ActionResult HeroDesc(string heroid)
+        {
+            DotaHeroes hero = db.heroes.Where(x=>x.id==heroid).FirstOrDefault();
+            return View(hero);
+        }
         //public List<DotaHeroes> FilterImagesForHeroes(List<DotaHeroes> heroes)
         //{
         //    List<DotaHeroes> hero = new List<DotaHeroes>();
@@ -53,5 +68,34 @@ namespace SteamAPIWebApplication.Controllers
         //        hero.Add(new DotaHeroes() { })
         //    }
         //}
+        public void test()
+        {
+            //DotaGCHandler dota;
+            //SteamClient client = new SteamClient();
+            //DotaGCHandler.Bootstrap(client);
+            //dota = client.GetHandler<DotaGCHandler>();
+
+            //// ... later when Steam is connected
+            //dota.Start();
+            using (DotA2StatsParser.Dataparser dataparser = new DotA2StatsParser.Dataparser())
+            {
+                IHealthCheckResult result = dataparser.PerformHealthCheck();
+
+                if (result.IsDotabuffAvailable)
+                {
+                    IHero trollWarlord = dataparser.GetHeroPageData(Heroes.TrollWarlord);
+                    IItem helmOfTheDominator = dataparser.GetItemPageData(Items.HelmOfTheDominator);
+                    IPlayer player1 = dataparser.GetPlayerPageDataBySteamId(User.Identity.GetUserId());
+
+                    IEnumerable<IMatchExtended> matchList = dataparser.GetPlayerMatchesPageData(player1.Id, new PlayerMatchesOptions() { Duration = Durations.Between20And30 });
+                }
+
+                if (result.IsYaspAvailable)
+                {
+                    //IEnumerable<IWordCloud> playerWordCount = dataparser.GetWordCloud("106863163");
+                }
+            }
+
+        }
     }
 }

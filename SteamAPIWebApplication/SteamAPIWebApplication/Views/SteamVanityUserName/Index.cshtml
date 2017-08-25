@@ -1,16 +1,28 @@
 ﻿@model SteamAPIWebApplication.ViewModels.SteamFriendsViewModel
 @using Microsoft.AspNet.Identity
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Model.svPersonalInfo.personaname + "- Profile";
+    //User.Identity.GetUserName()
 }
-
+<style>
+    .friendliststeam{
+        display:none;
+    }
+    .friendliststeam:nth-child(-n+8)
+    {
+        display:block;
+    }
+</style>
 @*<p>@Model.svPersonalInfo.profilestate</p><br />
 <p>@Model.svPersonalInfo.profileurl</p><br/>
 <p>@Model.svPersonalInfo.communityvisibilitystate</p><br />*@
 <div class="row">
     <div class="col-md-8">
         <div class="background-custom-full background-padding">
-            @{ Html.RenderAction("MatchDetails", "SteamMatchDetails");}
+            @{ Html.RenderAction("GetMatchDetailsNew", "SteamMatchDetails");}
+            <div class="text-right col-md-12 col-sm-12">
+                <button class="btn btn-link">More >></button>
+            </div>
         </div>
     </div>
     <div class="col-md-4">
@@ -20,7 +32,7 @@
             {
                 @*<div class="form-group">*@
                 @*<div class="col-md-4">*@
-                <div class="form-group">
+                <div class="form-group friendliststeam listfriendsteam">
                     <div class="col-md-2">
                         <a href="@Url.Action("Index","SteamMatchDetails", new { id = Model.FriendsList[i].steamid })"><img src="@Model.svFriendsInfo[i].avatar" alt="@Model.svFriendsInfo[i].personaname" /></a>
                     </div>
@@ -33,9 +45,13 @@
                         </ul>
                     </div>
                 </div>
+                
 
                 @*</div>*@
             }
+            <div class="col-md-12 text-right">
+                <button id="morelist" value="more" class="btn btn-link">More >></button>
+            </div>
         </div>
     </div>
 
@@ -46,3 +62,24 @@
         @{ Html.RenderAction("MatchDetails","SteamMatchDetails");}
     </div>
 </div>*@
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var linktext = $("#morelist").text();
+            $("#morelist").click(function () {
+                if (linktext == "More >>")
+                {
+                    $(".listfriendsteam").removeClass("friendliststeam");
+                    $("#morelist").text("Less <<");
+                    linktext = $("#morelist").text();
+                }
+                else
+                {
+                    $(".listfriendsteam").addClass("friendliststeam");
+                    $("#morelist").text("More >>");
+                    linktext = $("#morelist").text();
+                }
+            });
+        });
+    </script>
+    }

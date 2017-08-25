@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,7 @@ namespace SteamAPIWebApplication.Models.SteamMatchDetailsAPI
         public string results_remaining { get; set; }
         public List<SteamMatchDetailsFull> matches { get; set; }
         public List<SteamPlayersMatchDetails> players { get; set; }
+        //public IPagedList<SteamMatchDetailsAPI> matchdetailpaged { get; set; }
         //public List<SteamMatchDetailsAPI> steamMatchDetailsList { get; set; }
        
     }

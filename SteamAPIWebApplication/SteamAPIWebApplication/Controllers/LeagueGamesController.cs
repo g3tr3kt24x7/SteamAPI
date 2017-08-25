@@ -15,47 +15,64 @@ namespace SteamAPIWebApplication.Controllers
         public ActionResult LeagueGames()
         {
             List<LeagueGamesAll> leagueGames = new List<LeagueGamesAll>();
-            using (dynamic steamLeagueGames = WebAPI.GetInterface("IDOTA2Match_570", clsCommon.APIKey))
+            try
             {
-                
-                KeyValue kvLeagueGames = steamLeagueGames.GetLeagueListing();
-                foreach(var league in kvLeagueGames["leagues"].Children)
+
+                using (dynamic steamLeagueGames = WebAPI.GetInterface("IDOTA2Match_570", clsCommon.APIKey))
                 {
-                    LeagueGamesAll l = new LeagueGamesAll()
+
+                    KeyValue kvLeagueGames = steamLeagueGames.GetLeagueListing();
+                    foreach (var league in kvLeagueGames["leagues"].Children)
                     {
-                        LeagueID = Convert.ToInt32(league["leagueid"].Value),
-                        name=clsCommon.FilterLeagueGameName(league["name"].Value),
-                        description=league["description"].Value,
-                        tournament_url=league["tournament_url"].Value
-                    };
-                    
-                    leagueGames.Add(l);
-                    //leagueGames.OrderByDescending(a => a.LeagueID);
+                        LeagueGamesAll l = new LeagueGamesAll()
+                        {
+                            LeagueID = Convert.ToInt32(league["leagueid"].Value),
+                            name = clsCommon.FilterLeagueGameName(league["name"].Value),
+                            description = league["description"].Value,
+                            tournament_url = league["tournament_url"].Value
+                        };
+
+                        leagueGames.Add(l);
+                        //leagueGames.OrderByDescending(a => a.LeagueID);
+                    }
                 }
             }
-                return View(leagueGames.OrderByDescending(x=>x.LeagueID));
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                throw ex;
+            }
+            return View(leagueGames.OrderByDescending(x => x.LeagueID));
         }
         [ChildActionOnly]
         public ActionResult LeagueGamePartial()
         {
             List<LeagueGamesAll> leagueGames = new List<LeagueGamesAll>();
-            using (dynamic steamLeagueGames = WebAPI.GetInterface("IDOTA2Match_570", clsCommon.APIKey))
+            try
             {
-
-                KeyValue kvLeagueGames = steamLeagueGames.GetLeagueListing();
-                foreach (var league in kvLeagueGames["leagues"].Children)
+                using (dynamic steamLeagueGames = WebAPI.GetInterface("IDOTA2Match_570", clsCommon.APIKey))
                 {
-                    LeagueGamesAll l = new LeagueGamesAll()
+
+                    KeyValue kvLeagueGames = steamLeagueGames.GetLeagueListing();
+                    foreach (var league in kvLeagueGames["leagues"].Children)
                     {
-                        LeagueID = Convert.ToInt32(league["leagueid"].Value),
-                        name = clsCommon.FilterLeagueGameName(league["name"].Value),
-                        description = league["description"].Value,
-                        tournament_url = league["tournament_url"].Value
-                    };
-                    leagueGames.Add(l);
+                        LeagueGamesAll l = new LeagueGamesAll()
+                        {
+                            LeagueID = Convert.ToInt32(league["leagueid"].Value),
+                            name = clsCommon.FilterLeagueGameName(league["name"].Value),
+                            description = league["description"].Value,
+                            tournament_url = league["tournament_url"].Value
+                        };
+                        leagueGames.Add(l);
+                    }
                 }
             }
-            return View(leagueGames.OrderByDescending(x=>x.LeagueID).Take(7));
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                throw ex;
+            }
+            return View(leagueGames.OrderByDescending(x => x.LeagueID).Take(7));
         }
         [ChildActionOnly]
         public ActionResult LiveLeagueGame()
@@ -64,7 +81,7 @@ namespace SteamAPIWebApplication.Controllers
             {
 
             }
-                return View();
+            return View();
         }
     }
 }
